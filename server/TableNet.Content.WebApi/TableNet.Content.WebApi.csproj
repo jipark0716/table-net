@@ -8,12 +8,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Grpc.AspNetCore" Version="2.76.0" />
-        <PackageReference Include="Grpc.Tools" Version="2.76.0" PrivateAssets="All" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.76.0"/>
+        <PackageReference Include="Grpc.Tools" Version="2.76.0" PrivateAssets="All"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Protobuf Include="..\proto\**\*.proto" GrpcServices="Server" />
+        <Protobuf Include="..\proto\**\*.proto" GrpcServices="Server"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\TableNet.TypeWrapper.Validate\TableNet.TypeWrapper.Validate.csproj"/>
+        <ProjectReference Include="..\TableNet.TypeWrapper\TableNet.TypeWrapper\TableNet.TypeWrapper.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer"/>
     </ItemGroup>
 
 </Project>

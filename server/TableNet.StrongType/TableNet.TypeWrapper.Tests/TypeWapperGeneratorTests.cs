@@ -12,8 +12,9 @@ public class StrongTypeGeneratorTests
     private const string Source = """
                                   namespace TestNamespace;
                                   
-                                  [Wapper<string>]
-                                  public readonly record struct UserName;
+                                  [Wrapper<string>]
+                                  [Validate<NotNullValidator>]
+                                  public readonly partial record struct UserName;
                                   """;
     
     [Fact]

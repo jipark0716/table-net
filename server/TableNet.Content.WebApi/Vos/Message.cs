@@ -1,5 +1,9 @@
+using TableNet.TypeWrapper.Validate;
+
 namespace TableNet.WebApi.Vos;
 
-public readonly record struct MessageId(ulong Value);
+[Wrapper<ulong>]
+public readonly partial record struct MessageId;
 
-public readonly record struct MessageContent(string Value);
+[Wrapper<string>]
+public readonly partial record struct MessageContent;

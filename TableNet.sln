@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.Content.WebApi", "server/TableNet.Content.WebApi\TableNet.Content.WebApi.csproj", "{DB64C177-F615-46E6-B5D0-B0C2F4113B6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.Auth.WebApi", "server/TableNet.Auth.WebApi\TableNet.Auth.WebApi.csproj", "{6A9BFE74-0FF5-4009-A84E-D137AB82226D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.TypeWrapper", "TableNet.StrongType\TableNet.TypeWrapper\TableNet.TypeWrapper.csproj", "{0BB667A2-8BCD-463F-8520-07E86A0A9BD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.TypeWrapper.Tests", "TableNet.StrongType\TableNet.TypeWrapper.Tests\TableNet.TypeWrapper.Tests.csproj", "{6FCF10F2-19C0-4D09-8084-032EC136430C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB64C177-F615-46E6-B5D0-B0C2F4113B6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB64C177-F615-46E6-B5D0-B0C2F4113B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB64C177-F615-46E6-B5D0-B0C2F4113B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB64C177-F615-46E6-B5D0-B0C2F4113B6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A9BFE74-0FF5-4009-A84E-D137AB82226D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9BFE74-0FF5-4009-A84E-D137AB82226D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9BFE74-0FF5-4009-A84E-D137AB82226D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9BFE74-0FF5-4009-A84E-D137AB82226D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB667A2-8BCD-463F-8520-07E86A0A9BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB667A2-8BCD-463F-8520-07E86A0A9BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB667A2-8BCD-463F-8520-07E86A0A9BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB667A2-8BCD-463F-8520-07E86A0A9BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FCF10F2-19C0-4D09-8084-032EC136430C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FCF10F2-19C0-4D09-8084-032EC136430C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FCF10F2-19C0-4D09-8084-032EC136430C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FCF10F2-19C0-4D09-8084-032EC136430C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

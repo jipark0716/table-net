@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package table_net.chat.v1;
+
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "TableNet.Chat.V1";
+
+message CreateMessageRequest {
+  Message message = 1;
+}
+
+message CreateMessageResult {
+  oneof result {
+    google.protobuf.Empty success = 1;
+    CreateMessageFail fail = 2;
+  }
+}
+
+message CreateMessageFail {}
+
+message Message {
+  string content = 1;
+}
+
+message MessageEvent {
+  uint64 event_id = 1;
+  oneof event {
+    CreateMessageEvent create = 2;
+  }
+}
+
+message CreateMessageEvent {
+  Message message = 1;
+}

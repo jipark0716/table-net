@@ -1,0 +1,6 @@
+@TableNet.Auth.WebApi_HostAddress = http://localhost:5185
+
+GET {{TableNet.Auth.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,3 +1,3 @@
 namespace TableNet.TypeWrapper.Validate;
 
-public readonly record struct ValidateErrorCode(short Value);
+public readonly record struct ValidateErrorCode(int Value);

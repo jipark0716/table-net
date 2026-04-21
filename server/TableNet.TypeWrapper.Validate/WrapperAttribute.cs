@@ -9,10 +9,10 @@ public class WrapperAttribute<[UsedImplicitly] T> : Attribute;
 public class ValidateAttribute<[UsedImplicitly] T> : Attribute
     where T : IValidator;
 
-public interface IWrapperType<T, TInner>
+public interface IWrapperType<T, in TInner>
     where T : struct
 {
-    static abstract ParseResult<T> Parse(ref TInner value);
+    static abstract ParseResult<T> Parse(TInner value);
 }
 
 public readonly struct ParseResult<T>

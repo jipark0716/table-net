@@ -36,9 +36,8 @@ public class StrongTypeGenerator : IIncrementalGenerator
             context.Node is not RecordDeclarationSyntax decl ||
             context.SemanticModel.GetDeclaredSymbol(decl) is not INamedTypeSymbol alias
         ) return null; 
-
-        AttributeData? wrapperAttribute = alias.GetAttributes().FirstOrDefault(a => a.AttributeClass?.Name is "Wrapper");
-
+        AttributeData? wrapperAttribute = alias.GetAttributes().FirstOrDefault(a => a.AttributeClass?.Name is "Wrapper" or "WrapperAttribute");
+        
         if (
             wrapperAttribute is null ||
             wrapperAttribute.AttributeClass!.TypeArguments.Length != 1 ||
@@ -47,7 +46,7 @@ public class StrongTypeGenerator : IIncrementalGenerator
         
         List<AttributeData> validatorAttribute = alias
             .GetAttributes()
-            .Where(a => a.AttributeClass?.Name is "Validate").ToList();
+            .Where(a => a.AttributeClass?.Name is "Validate" or "ValidateAttribute").ToList();
 
         return new Meta(
             alias.Name,
@@ -78,25 +77,25 @@ public class StrongTypeGenerator : IIncrementalGenerator
 
           public readonly partial record struct {{meta.ClassName}} : IWrapperType<{{meta.ClassName}}, {{meta.TypeName}}>
           {
-              public static {{meta.TypeName}} TryParse(ref {{meta.TypeName}} Value)
+              public {{meta.TypeName}} Value { get; }
+              private {{meta.ClassName}}({{meta.TypeName}} value) => Value = value;
+          
+              public static ParseResult<{{meta.ClassName}}> Parse({{meta.TypeName}} value)
               {
-                  public static abstract ParseResult<{{meta.ClassName}}> Parse(ref {{meta.TypeName}} value)
-                  {
-                      List<ValidateErrorCode?> errors = [
-                          {{
-                              string.Join("\n", meta
-                                  .ValidatorAttribute
-                                  .Select(GenerateValidateContent)
-                                  .ToList())
-                          }}
-                      ];
-                      
-                      return ParseResult<{{meta.ClassName}}>.Create(value, errors.Select(e => e is not null).ToList());
-                  }
+                  List<ValidateErrorCode?> errors = [
+                      {{
+                          string.Join("\n", meta
+                              .ValidatorAttribute
+                              .Select(GenerateValidateContent)
+                              .ToList())
+                      }}
+                  ];
+                  
+                  return ParseResult<{{meta.ClassName}}>.Create(new {{meta.ClassName}}(value), errors.OfType<ValidateErrorCode>().ToList());
               } 
           }
           """;
 
     static string GenerateValidateContent(AttributeData attribute) =>
-        $"new {attribute.AttributeClass!.Name}().IsValid(ref value),";
+        $"new {attribute.AttributeClass!.Name}().Run(ref value),";
 }

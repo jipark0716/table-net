@@ -13,10 +13,10 @@ builder.WebHost.ConfigureKestrel(o =>
     });
 
 builder.Services
-    .AddScoped<MessageService>();
+    .AddScoped<MessageServiceServer>();
 
 WebApplication app = builder.Build();
 
-app.MapGrpcService<MessageService>();
+app.MapGrpcService<MessageServiceServer>();
     
 await app.RunAsync();

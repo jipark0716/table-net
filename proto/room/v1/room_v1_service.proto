@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package table_net.room.v1;
+
+import "google/protobuf/empty.proto";
+import "common/common_message.proto";
+import "room/v1/room_v1_message.proto";
+
+option csharp_namespace = "TableNet.Room.V1";
+
+service RoomService {
+  rpc Create(CreateRoomRequest) returns(CreateRoomResult);
+  rpc Join(JoinRoomRequest) returns(JoinRoomResult);
+}

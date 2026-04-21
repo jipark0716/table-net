@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package common;
+
+option csharp_namespace = "TableNet.Common";
+
+message InvalidRequestErrors {
+  repeated InvalidRequestError errors = 1;
+}
+
+message InvalidRequestError {
+  string fieldName = 1;
+  repeated int32 errorCods = 2;
+}

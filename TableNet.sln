@@ -4,9 +4,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.Content.WebApi", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.Auth.WebApi", "server/TableNet.Auth.WebApi\TableNet.Auth.WebApi.csproj", "{6A9BFE74-0FF5-4009-A84E-D137AB82226D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.TypeWrapper", "server\TableNet.StrongType\TableNet.TypeWrapper\TableNet.TypeWrapper.csproj", "{0BB667A2-8BCD-463F-8520-07E86A0A9BD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.TypeWrapper", "server\TableNet.TypeWrapper\TableNet.TypeWrapper\TableNet.TypeWrapper.csproj", "{0BB667A2-8BCD-463F-8520-07E86A0A9BD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.TypeWrapper.Tests", "server\TableNet.StrongType\TableNet.TypeWrapper.Tests\TableNet.TypeWrapper.Tests.csproj", "{6FCF10F2-19C0-4D09-8084-032EC136430C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.TypeWrapper.Tests", "server\TableNet.TypeWrapper\TableNet.TypeWrapper.Tests\TableNet.TypeWrapper.Tests.csproj", "{6FCF10F2-19C0-4D09-8084-032EC136430C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableNet.TypeWrapper.Validate", "server\TableNet.TypeWrapper.Validate\TableNet.TypeWrapper.Validate.csproj", "{52969C0F-DBF5-4852-A545-41CEA028836A}"
 EndProject

@@ -2,11 +2,13 @@ syntax = "proto3";
 
 package table_net.chat.v1;
 
-import "chat/v1/message.proto";
+import "chat/v1/chat_v1_message.proto";
+import "common/common_message.proto";
+import "google/protobuf/empty.proto";
 
 option csharp_namespace = "TableNet.Chat.V1";
 
 service MessageService {
   rpc CreateMessage(CreateMessageRequest) returns (CreateMessageResult);
-  rpc ReceiveMessage(Receive) returns (stream MessageEvent);
+  rpc ReceiveMessage(google.protobuf.Empty) returns (stream MessageEvent);
 }

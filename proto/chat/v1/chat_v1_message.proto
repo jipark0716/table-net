@@ -3,7 +3,7 @@ syntax = "proto3";
 package table_net.chat.v1;
 
 import "google/protobuf/empty.proto";
-
+import "common/common_message.proto";
 option csharp_namespace = "TableNet.Chat.V1";
 
 message CreateMessageRequest {
@@ -13,11 +13,9 @@ message CreateMessageRequest {
 message CreateMessageResult {
   oneof result {
     google.protobuf.Empty success = 1;
-    CreateMessageFail fail = 2;
+    common.InvalidRequestErrors invalidRequest = 2;
   }
 }
-
-message CreateMessageFail {}
 
 message Message {
   string content = 1;

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package table_net.auth.v1;
+
+import "google/protobuf/empty.proto";
+import "common/common_message.proto";
+import "auth/v1/auth_v1_message.proto";
+option csharp_namespace = "TableNet.Auth.V1";
+
+service AuthService {
+  rpc GuestLogin(google.protobuf.Empty) returns (LoginResult);
+  rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty);
+}

@@ -3,10 +3,11 @@ using Grpc.Core;
 using TableNet.Chat.V1;
 using TableNet.TypeWrapper.Validate;
 using TableNet.WebApi.Vos;
+using Service = TableNet.WebApi.Services.MessageService;
 
 namespace TableNet.WebApi.GrpcServer;
 
-public class MessageServiceServer : MessageService.MessageServiceBase
+public class MessageServiceServer(Service service) : MessageService.MessageServiceBase, IGrpcServer
 {
     public override Task<CreateMessageResult> CreateMessage(CreateMessageRequest request, ServerCallContext context)
     {
@@ -19,9 +20,9 @@ public class MessageServiceServer : MessageService.MessageServiceBase
                     (messageContent.Errors, nameof(request.Message.Content))
                 ),
             });
-        
-        // todo message 발송
 
+        service.CreateMessage(messageContent.Value);
+        
         return Task.FromResult(new CreateMessageResult
         {
             Success = new Empty(),

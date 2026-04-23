@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package table_net.auth.v1;
+
+import "google/protobuf/empty.proto";
+import "common/common_message.proto";
+option csharp_namespace = "TableNet.Auth.V1";
+
+message Session {
+  bytes id = 1;
+}
+
+message LoginResult {
+  oneof result {
+    Session success = 1;
+  }
+}

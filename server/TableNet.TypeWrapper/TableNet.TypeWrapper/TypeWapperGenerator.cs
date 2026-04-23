@@ -16,7 +16,7 @@ public class StrongTypeGenerator : IIncrementalGenerator
         string ClassName,
         string TypeName,
         bool IsReferenceType,
-        List<AttributeData> ValidatorAttribute
+        List<INamedTypeSymbol> ValidatorAttribute
     );
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
@@ -44,9 +44,12 @@ public class StrongTypeGenerator : IIncrementalGenerator
             wrapperAttribute.AttributeClass.TypeArguments[0] is not INamedTypeSymbol origin
         ) return null;
         
-        List<AttributeData> validatorAttribute = alias
+        List<INamedTypeSymbol> validatorAttribute = alias
             .GetAttributes()
-            .Where(a => a.AttributeClass?.Name is "Validate" or "ValidateAttribute").ToList();
+            .Where(a => a.AttributeClass?.Name is "Validate" or "ValidateAttribute")
+            .Select(o => o.AttributeClass?.TypeArguments[0])
+            .OfType<INamedTypeSymbol>()
+            .ToList();
 
         return new Meta(
             alias.Name,
@@ -78,7 +81,7 @@ public class StrongTypeGenerator : IIncrementalGenerator
           public readonly partial record struct {{meta.ClassName}} : IWrapperType<{{meta.ClassName}}, {{meta.TypeName}}>
           {
               public {{meta.TypeName}} Value { get; }
-              private {{meta.ClassName}}({{meta.TypeName}} value) => Value = value;
+              public {{meta.ClassName}}({{meta.TypeName}} value) => Value = value;
           
               public static ParseResult<{{meta.ClassName}}> Parse({{meta.TypeName}} value)
               {
@@ -96,6 +99,6 @@ public class StrongTypeGenerator : IIncrementalGenerator
           }
           """;
 
-    static string GenerateValidateContent(AttributeData attribute) =>
-        $"new {attribute.AttributeClass!.Name}().Run(ref value),";
+    static string GenerateValidateContent(INamedTypeSymbol validator) =>
+        $"new {validator.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)}().Run(ref value),";
 }
